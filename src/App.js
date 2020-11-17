@@ -42,9 +42,16 @@ class App extends React.Component {
                           headers: {
                               'Content-Type': 'application/json'
                           },
-                          body: JSON.stringify(item)
+                            body: JSON.stringify(item)
                       })
-                      this.state.items.splice(this.state.items.indexOf(item), 1)
+                      var index;
+                      var list = this.state.items
+                      for (var i = 0; i < list.length; i++) {
+                          if (list[i].item === item.item) {
+                              index = i;
+                          }
+                      }
+                      this.state.items.splice(this.state.items.indexOf(index), 1)
                   }}>Delete</button></td>
               </tr>
           )

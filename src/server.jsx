@@ -18,8 +18,18 @@ app.post('/list', (req, res) => {
 })
 
 app.delete('/list', (req, res) => {
+
+    var itemName = req.body.item
+    var index;
     // alert(req.body.item)
-    list.splice(list.indexOf(req.body), 1)
+
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].item === itemName) {
+            index = i;
+        }
+    }
+
+    list.splice(list.indexOf(index), 1)
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
